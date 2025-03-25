@@ -112,3 +112,40 @@ lib.addCommand('giveplane', {
         type = 'success'
     })
 end)
+
+---@description Give player helicopter | NOT TESTED
+lib.addCommand('giveheli', {
+    help = 'Gives a helicopter to a player',
+    params = {
+        {
+            name = 'target',
+            type = 'playerId',
+            help = 'Target player\'s server id',
+        },
+        {
+            name = 'heli',
+            type = 'string',
+            help = 'Helicopter model name',
+        }
+    },
+    restricted = Shared.RestrictedGroups['plane']
+}, function(source, args, raw)
+    local Vehicle = VehicleClass.new()
+    local plate = Vehicle:generatePlate()
+    local vehicleProperties = Vehicle:createVehicleProperties(plate, args.vehicle)
+    local vehicleOwner = GetPlayerIdentifierByType(source, Shared.Identifier)
+
+    if not Vehicle:saveVehicletoDB(vehicleProperties, vehicleOwner, 'heli') then
+        return lib.notify(source, {
+            title = 'Car',
+            description = 'Something went wrong while giving the helicopter, check server-console for more information.',
+            type = 'error'
+        })
+    end
+
+    lib.notify(source, {
+        title = 'Car',
+        description = ('Helicopter (%s) given to player %s with plate %s'):format(args.vehicle, args.target, plate),
+        type = 'success'
+    })
+end)
