@@ -11,16 +11,24 @@ function Vehicle.new(plat)
     return self
 end
 
----Generates a random vehicle plate
+---Generates a random vehicle plate in the format "NGK 920"
 ---@return string
 function Vehicle:generatePlate()
     local plate = ""
-    for i = 1, 8 do
+
+    for i = 1, 3 do
         plate = plate .. string.char(math.random(65, 90))
+    end
+
+    plate = plate .. " "
+
+    for i = 1, 3 do
+        plate = plate .. tostring(math.random(0, 9))
     end
 
     return plate
 end
+
 
 ---Creates a vehicle properties table with all data
 ---@param plate string
