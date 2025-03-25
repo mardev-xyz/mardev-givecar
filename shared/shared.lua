@@ -4,7 +4,8 @@ local Shared <const> = { }
 Shared.RestrictedGroups = {
     ['car'] = { 'group.admin' },
     ['boat'] = { 'group.mod' },
-    ['plane'] = { 'group.mod' }
+    ['plane'] = { 'group.mod' },
+    ['helicopter'] = { 'group.mod' }
 }
 
 ---@alias Identifier 'steam' | 'discord' | 'xbl' | 'live' | 'license' | 'license2' | 'ip' | 'fivem'
