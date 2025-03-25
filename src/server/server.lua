@@ -59,7 +59,8 @@ lib.addCommand('giveboat', {
     local Vehicle = VehicleClass.new()
     local plate = Vehicle:generatePlate()
     local vehicleProperties = Vehicle:createVehicleProperties(plate, args.vehicle)
-    local vehicleOwner = GetPlayerIdentifierByType(source, Shared.Identifier)
+    local rockstarIdentifier = GetPlayerIdentifierByType(source, Shared.Identifier)
+    local vehicleOwner = string.match(rockstarIdentifier, ":(%w+)")
 
     if not Vehicle:saveVehicletoDB(vehicleProperties, vehicleOwner, 'boat') then
         return lib.notify(source, {
@@ -96,7 +97,8 @@ lib.addCommand('giveplane', {
     local Vehicle = VehicleClass.new()
     local plate = Vehicle:generatePlate()
     local vehicleProperties = Vehicle:createVehicleProperties(plate, args.vehicle)
-    local vehicleOwner = GetPlayerIdentifierByType(source, Shared.Identifier)
+    local rockstarIdentifier = GetPlayerIdentifierByType(source, Shared.Identifier)
+    local vehicleOwner = string.match(rockstarIdentifier, ":(%w+)")
 
     if not Vehicle:saveVehicletoDB(vehicleProperties, vehicleOwner, 'plane') then
         return lib.notify(source, {
@@ -133,7 +135,8 @@ lib.addCommand('giveheli', {
     local Vehicle = VehicleClass.new()
     local plate = Vehicle:generatePlate()
     local vehicleProperties = Vehicle:createVehicleProperties(plate, args.vehicle)
-    local vehicleOwner = GetPlayerIdentifierByType(source, Shared.Identifier)
+    local rockstarIdentifier = GetPlayerIdentifierByType(source, Shared.Identifier)
+    local vehicleOwner = string.match(rockstarIdentifier, ":(%w+)")
 
     if not Vehicle:saveVehicletoDB(vehicleProperties, vehicleOwner, 'heli') then
         return lib.notify(source, {
