@@ -11,7 +11,7 @@ function Vehicle.new(plat)
     return self
 end
 
----Generates a random vehicle plate in the format "NGK 920"
+---Generates a random vehicle plate
 ---@return string
 function Vehicle:generatePlate()
     local plate = ""
